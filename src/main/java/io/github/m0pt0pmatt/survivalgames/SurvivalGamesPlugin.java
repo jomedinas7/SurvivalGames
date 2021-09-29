@@ -58,13 +58,15 @@ import java.util.Optional;
 
 import static io.github.m0pt0pmatt.survivalgames.Util.toCommandCallable;
 
-/** SurvivalGames Sponge Plugin */
+/**
+ * SurvivalGames Sponge Plugin
+ */
 @Plugin(
-    id = "survival-games",
-    name = "Survival Games",
-    version = "1.2.0",
-    description = "Survival Games for Sponge.",
-    url = "https://github.com/mattysweeps/SurvivalGames"
+        id = "survival-games",
+        name = "Survival Games",
+        version = "1.2.0",
+        description = "Survival Games for Sponge.",
+        url = "https://github.com/mattysweeps/SurvivalGames"
 )
 public class SurvivalGamesPlugin {
 
@@ -117,22 +119,20 @@ public class SurvivalGamesPlugin {
         LOGGER.info("Survival Games Plugin Disabled.");
     }
 
-    private void registerCommandTree(SurvivalGamesCommand survivalGamesCommand) {
+    private void registerCommandTree(SurvivalGamesCommand gamesCommand) {
         Sponge.getCommandManager()
                 .register(
                         this,
-                        toCommandCallable(survivalGamesCommand),
-                        survivalGamesCommand.getAliases());
+                        toCommandCallable(gamesCommand),
+                        gamesCommand.getAliases());
     }
 
     private void setupConfigDirectory() {
 
         File configDirectory = new File(sharedRootConfig.toFile(), "survival-games");
 
-        if (!configDirectory.exists()) {
-            if (!configDirectory.mkdir()) {
+        if (!configDirectory.exists() && !configDirectory.mkdir()) {
                 LOGGER.error("Could not create config directory!");
-            }
         }
 
         CONFIG_DIRECTORY = sharedRootConfig.resolve("survival-games");

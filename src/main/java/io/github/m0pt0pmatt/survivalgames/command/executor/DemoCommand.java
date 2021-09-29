@@ -129,7 +129,7 @@ public class DemoCommand extends LeafCommand {
                     throw new RuntimeException("Could not delete demo world");
                 }
             } catch (RuntimeException e) {
-                throw e;
+                System.out.print("Caught Runtime Exception!");
             } catch (Exception e) {
                 throw new RuntimeException("Could not delete demo world");
             }
